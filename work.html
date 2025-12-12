@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Work - Digital Architecture & Art Portfolio">
+    <title>Work | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">Portfolio</div>
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="work.html" class="nav-link">Work</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+        <!-- Work Section -->
+        <section class="work-page">
+            <div class="container">
+                <h2 class="section-title">All Work</h2>
+                <!-- Categories removed as requested -->
+                <div class="work-grid">
+                    <a href="lightning-design-project.html" class="work-item-link" data-category="college">
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="images/lightning design/light-cardboard/cardboard-thumbnail.jpg"
+                                    alt="Lightning Design" class="work-thumbnail">
+                            </div>
+                            <div class="work-info">
+                                <h3 class="work-title">Lightning Design</h3>
+                                <p class="work-category">College</p>
+                                <span class="work-btn">View Details</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="semester1-project.html" class="work-item-link" data-category="college">
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="images/semester1/Phase 5 - Digital Documentation/s1-p5-03.jpg"
+                                    alt="Semester 1 Project" class="work-thumbnail">
+                            </div>
+                            <div class="work-info">
+                                <h3 class="work-title">Semester 1 Project</h3>
+                                <p class="work-category">College</p>
+                                <span class="work-btn">View Details</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="semester2-project.html" class="work-item-link" data-category="college">
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="images/semester2/Phase 5- Final Model/sp25_112_mhatre_wong_kifei_model02_17.jpg"
+                                    alt="Semester 2 Project" class="work-thumbnail">
+                            </div>
+                            <div class="work-info">
+                                <h3 class="work-title">Semester 2 Project</h3>
+                                <p class="work-category">College</p>
+                                <span class="work-btn">View Details</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="within-and-beyond.html" class="work-item-link" data-category="highschool">
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="images/Within and Beyond/wnb final model/wnb-03.jpg" alt="Within and Beyond"
+                                    class="work-thumbnail">
+                            </div>
+                            <div class="work-info">
+                                <h3 class="work-title">Within and Beyond</h3>
+                                <p class="work-category">High School</p>
+                                <span class="work-btn">View Details</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="hidden-frame.html" class="work-item-link" data-category="highschool">
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="images/The hidden frame/final model/final-02.jpg" alt="The Hidden Frame"
+                                    class="work-thumbnail">
+                            </div>
+                            <div class="work-info">
+                                <h3 class="work-title">The Hidden Frame</h3>
+                                <p class="work-category">High School</p>
+                                <span class="work-btn">View Details</span>
+                            </div>
+                        </div>
+                    </a>
+                    <a href="in-between-time.html" class="work-item-link" data-category="highschool">
+                        <div class="work-item">
+                            <div class="work-image">
+                                <img src="images/In-between time/final/final-03.png" alt="In Between Time"
+                                    class="work-thumbnail">
+                            </div>
+                            <div class="work-info">
+                                <h3 class="work-title">In Between Time</h3>
+                                <p class="work-category">High School</p>
+                                <span class="work-btn">View Details</span>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Modal for Work Details -->
+        <div class="modal" id="work-modal">
+            <div class="modal-content">
+                <span class="modal-close">&times;</span>
+                <div class="modal-body">
+                    <h2 class="modal-title" id="modal-title"></h2>
+                    <p class="modal-category" id="modal-category"></p>
+                    <div class="modal-image" id="modal-image"></div>
+                    <p class="modal-description" id="modal-description"></p>
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2024 Portfolio. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Work data for modal
+        const workData = {
+            'Urban Residence': {
+                category: 'Architecture',
+                description: 'A contemporary urban residence exploring the relationship between interior and exterior spaces. The design emphasizes natural light and open floor plans while maintaining privacy and functionality.'
+            },
+            'Digital Form Study': {
+                category: 'Digital Art',
+                description: 'An exploration of digital forms and geometric compositions. This piece investigates the interplay between positive and negative space in a digital medium.'
+            },
+            'Minimalist Space': {
+                category: 'Architecture',
+                description: 'A minimalist architectural approach focusing on essential elements. Clean lines and thoughtful material selection create a serene living environment.'
+            },
+            'Geometric Composition': {
+                category: 'Digital Art',
+                description: 'A study in geometric abstraction, balancing symmetry and asymmetry. This work explores rhythm and pattern through digital manipulation.'
+            },
+            'Contemporary Structure': {
+                category: 'Architecture',
+                description: 'A modern structure that bridges traditional and contemporary design principles. The project demonstrates innovative use of materials and sustainable practices.'
+            },
+            'Abstract Design': {
+                category: 'Digital Art',
+                description: 'An abstract digital composition exploring color, form, and movement. This piece represents a departure from representational art into pure abstraction.'
+            }
+        };
+
+        // Work filter functionality
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const workItems = document.querySelectorAll('.work-item');
+        const modal = document.getElementById('work-modal');
+        const modalClose = document.querySelector('.modal-close');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                // Add active class to clicked button
+                button.classList.add('active');
+
+                const filter = button.getAttribute('data-filter');
+
+                workItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                        setTimeout(() => {
+                            item.style.opacity = '1';
+                            item.style.transform = 'translateY(0)';
+                        }, 10);
+                    } else {
+                        item.style.opacity = '0';
+                        item.style.transform = 'translateY(20px)';
+                        setTimeout(() => {
+                            item.style.display = 'none';
+                        }, 300);
+                    }
+                });
+            });
+        });
+
+        // Modal functionality for work page
+        workItems.forEach(item => {
+            const btn = item.querySelector('.work-btn');
+            if (btn) {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    const title = item.querySelector('.work-title').textContent;
+                    const data = workData[title];
+
+                    if (data && modal) {
+                        document.getElementById('modal-title').textContent = title;
+                        document.getElementById('modal-category').textContent = data.category;
+                        document.getElementById('modal-description').textContent = data.description;
+
+                        modal.style.display = 'block';
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            }
+        });
+
+        // Close modal
+        if (modalClose) {
+            modalClose.addEventListener('click', () => {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+        }
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+
+</html>

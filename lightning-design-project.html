@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Lightning Design - Digital Architecture & Art Portfolio">
+    <title>Lightning Design | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">Portfolio</div>
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="work.html" class="nav-link">Work</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+        <!-- Project Header -->
+        <section class="project-header">
+            <div class="container">
+                <div class="project-nav">
+                    <a href="work.html" class="back-link">← Back to Work</a>
+                </div>
+                <h1 class="project-title">Lightning Design</h1>
+                <p class="project-category">College</p>
+                <div class="project-description">
+                    <p>Arch 3535 - Digital Lightning Design: Rapid Prototyping and the CNC
+                        Experimentation with 3D-Printer, CNC, and other tools to create rapid design of lightning. </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Project Images -->
+        <section class="project-images">
+            <div class="container">
+                <!-- Section 1: 3D Printed -->
+                <div class="phase-section">
+                    <h2 class="phase-title">3D Printed</h2>
+
+                    <!-- Featured Image -->
+                    <div class="featured-image-container">
+                        <img src="images/lightning design/light-3d/light-3d.jpg" alt="3D Printed Lightning Design"
+                            class="featured-image"
+                            onclick="openLightboxImage('images/lightning design/light-3d/light-3d.jpg')">
+                    </div>
+
+                    <!-- Gallery with Navigation -->
+                    <div class="image-gallery" id="gallery-3d">
+                        <button class="gallery-arrow gallery-prev" onclick="changeImage('3d', -1)">←</button>
+                        <div class="gallery-main">
+                            <div class="image-square-frame">
+                                <img id="gallery-3d-main" src="" alt="3D Printed Gallery Image"
+                                    onclick="openLightboxImage('')" style="cursor: zoom-in;">
+                            </div>
+                        </div>
+                        <button class="gallery-arrow gallery-next" onclick="changeImage('3d', 1)">→</button>
+                    </div>
+                </div>
+
+                <!-- Section 2: Cardboard -->
+                <div class="phase-section">
+                    <h2 class="phase-title">Cardboard</h2>
+
+                    <!-- Featured Image -->
+                    <div class="featured-image-container">
+                        <img src="images/lightning design/light-cardboard/light-cardboard.jpg"
+                            alt="Cardboard Lightning Design" class="featured-image"
+                            onclick="openLightboxImage('images/lightning design/light-cardboard/light-cardboard.jpg')">
+                    </div>
+
+                    <!-- Gallery with Navigation -->
+                    <div class="image-gallery" id="gallery-cardboard">
+                        <button class="gallery-arrow gallery-prev" onclick="changeImage('cardboard', -1)">←</button>
+                        <div class="gallery-main">
+                            <div class="image-square-frame">
+                                <img id="gallery-cardboard-main" src="" alt="Cardboard Gallery Image"
+                                    onclick="openLightboxImage('')" style="cursor: zoom-in;">
+                            </div>
+                        </div>
+                        <button class="gallery-arrow gallery-next" onclick="changeImage('cardboard', 1)">→</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox Modal for Zoom -->
+        <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+            <span class="lightbox-close">&times;</span>
+            <button class="lightbox-arrow lightbox-prev"
+                onclick="event.stopPropagation(); changeLightboxImage(-1)">←</button>
+            <img id="lightbox-img" src="" alt="Zoomed Image" onclick="event.stopPropagation()">
+            <button class="lightbox-arrow lightbox-next"
+                onclick="event.stopPropagation(); changeLightboxImage(1)">→</button>
+        </div>
+
+        <!-- Project Footer -->
+        <section class="project-footer">
+            <div class="container">
+                <div class="project-nav-footer">
+                    <a href="work.html" class="back-link">← Back to Work</a>
+                    <a href="#top" class="back-link">Back to top ↑</a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2024 Portfolio. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Gallery images for each section (excluding the featured images)
+        const galleryData = {
+            '3d': {
+                images: [
+                    'light-3d/light-3d-01.jpg',
+                    'light-3d/light-3d-02.jpg',
+                    'light-3d/light-3d-03.jpg',
+                    'light-3d/light-3d-04.jpg',
+                    'light-3d/light-3d-05.jpg'
+                ],
+                currentIndex: 0
+            },
+            'cardboard': {
+                images: [
+                    'light-cardboard/cardboard-01.jpg',
+                    'light-cardboard/cardboard-02.jpg',
+                    'light-cardboard/cardboard-03.jpg'
+                ],
+                currentIndex: 0
+            }
+        };
+
+        const imageFolder = 'images/lightning design/';
+        let allLightboxImages = [];
+        let currentLightboxIndex = 0;
+
+        // Initialize gallery
+        function initGallery(section) {
+            const data = galleryData[section];
+            if (!data || data.images.length === 0) {
+                const gallery = document.getElementById(`gallery-${section}`);
+                if (gallery) {
+                    gallery.style.display = 'none';
+                }
+                return;
+            }
+
+            updateGalleryImage(section);
+        }
+
+        // Update gallery image
+        function updateGalleryImage(section) {
+            const data = galleryData[section];
+            if (!data || data.images.length === 0) return;
+
+            const mainImg = document.getElementById(`gallery-${section}-main`);
+
+            if (mainImg && data.images[data.currentIndex]) {
+                const imagePath = imageFolder + data.images[data.currentIndex];
+                mainImg.src = imagePath;
+                mainImg.onclick = function () {
+                    openLightboxImage(imagePath);
+                };
+                mainImg.onerror = function () {
+                    console.log('Image failed to load:', imagePath);
+                };
+            }
+        }
+
+        // Change image with arrows
+        function changeImage(section, direction) {
+            const data = galleryData[section];
+            if (!data) return;
+
+            data.currentIndex += direction;
+
+            if (data.currentIndex < 0) {
+                data.currentIndex = data.images.length - 1;
+            } else if (data.currentIndex >= data.images.length) {
+                data.currentIndex = 0;
+            }
+
+            updateGalleryImage(section);
+        }
+
+        // Open lightbox with single image
+        function openLightboxImage(imageSrc) {
+            // Collect all images for navigation (featured + gallery images)
+            allLightboxImages = [
+                imageFolder + 'light-3d/light-3d.jpg',
+                ...galleryData['3d'].images.map(img => imageFolder + img),
+                imageFolder + 'light-cardboard/light-cardboard.jpg',
+                ...galleryData['cardboard'].images.map(img => imageFolder + img)
+            ];
+
+            currentLightboxIndex = allLightboxImages.indexOf(imageSrc);
+            if (currentLightboxIndex === -1) currentLightboxIndex = 0;
+
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+
+            lightboxImg.src = allLightboxImages[currentLightboxIndex];
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close lightbox
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Change image in lightbox
+        function changeLightboxImage(direction) {
+            currentLightboxIndex += direction;
+
+            if (currentLightboxIndex < 0) {
+                currentLightboxIndex = allLightboxImages.length - 1;
+            } else if (currentLightboxIndex >= allLightboxImages.length) {
+                currentLightboxIndex = 0;
+            }
+
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = allLightboxImages[currentLightboxIndex];
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function (e) {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'ArrowLeft') {
+                    changeLightboxImage(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeLightboxImage(1);
+                } else if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            }
+        });
+
+        // Initialize galleries on page load
+        window.addEventListener('DOMContentLoaded', function () {
+            initGallery('3d');
+            initGallery('cardboard');
+        });
+    </script>
+</body>
+
+</html>

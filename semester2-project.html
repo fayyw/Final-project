@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Semester 2 Project - Digital Architecture & Art Portfolio">
+    <title>Semester 2 Project | Portfolio</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">Portfolio</div>
+        <ul class="nav-menu">
+            <li><a href="index.html" class="nav-link">Home</a></li>
+            <li><a href="about.html" class="nav-link">About</a></li>
+            <li><a href="work.html" class="nav-link">Work</a></li>
+            <li><a href="contact.html" class="nav-link">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content Wrapper -->
+    <div class="main-content">
+        <!-- Project Header -->
+        <section class="project-header">
+            <div class="container">
+                <div class="project-nav">
+                    <a href="work.html" class="back-link">← Back to Work</a>
+                </div>
+                <h1 class="project-title">Semester 2 Project</h1>
+                <p class="project-category">College</p>
+            </div>
+        </section>
+
+        <!-- Project Images Gallery -->
+        <section class="project-images">
+            <div class="container">
+                <!-- Phase 1 -->
+                <div class="phase-section">
+                    <h2 class="phase-title">Phase 1: 2.5D Hybrid Model</h2>
+                    <div class="image-gallery" id="phase1-gallery">
+                        <button class="gallery-arrow gallery-prev" onclick="changeImage('phase1', -1)">←</button>
+                        <div class="gallery-main">
+                            <div class="image-square-frame">
+                                <img id="phase1-main" src="" alt="Phase 1 Image" onclick="openLightbox('phase1')">
+                            </div>
+                        </div>
+                        <button class="gallery-arrow gallery-next" onclick="changeImage('phase1', 1)">→</button>
+                    </div>
+                </div>
+
+                <!-- Phase 2 -->
+                <div class="phase-section">
+                    <h2 class="phase-title">Phase 2: Textural Massing Models</h2>
+                    <div class="image-gallery" id="phase2-gallery">
+                        <button class="gallery-arrow gallery-prev" onclick="changeImage('phase2', -1)">←</button>
+                        <div class="gallery-main">
+                            <div class="image-square-frame">
+                                <img id="phase2-main" src="" alt="Phase 2 Image" onclick="openLightbox('phase2')">
+                            </div>
+                        </div>
+                        <button class="gallery-arrow gallery-next" onclick="changeImage('phase2', 1)">→</button>
+                    </div>
+                </div>
+
+                <!-- Phase 3: Convert PDFs to images -->
+                <div class="phase-section">
+                    <h2 class="phase-title">Phase 3: Digital Drawing Vignettes</h2>
+                    <div class="image-gallery" id="phase3-gallery">
+                        <button class="gallery-arrow gallery-prev" onclick="changeImage('phase3', -1)">←</button>
+                        <div class="gallery-main">
+                            <div class="image-square-frame">
+                                <img id="phase3-main" src="" alt="Phase 3 Image" onclick="openLightbox('phase3')">
+                            </div>
+                        </div>
+                        <button class="gallery-arrow gallery-next" onclick="changeImage('phase3', 1)">→</button>
+                    </div>
+                </div>
+
+                <!-- Phase 4: Convert PDFs to images -->
+                <div class="phase-section">
+                    <h2 class="phase-title">Phase 4: Digital Drawing Final</h2>
+                    <div class="image-gallery" id="phase4-gallery">
+                        <button class="gallery-arrow gallery-prev" onclick="changeImage('phase4', -1)">←</button>
+                        <div class="gallery-main">
+                            <div class="image-square-frame">
+                                <img id="phase4-main" src="" alt="Phase 4 Image" onclick="openLightbox('phase4')">
+                            </div>
+                        </div>
+                        <button class="gallery-arrow gallery-next" onclick="changeImage('phase4', 1)">→</button>
+                    </div>
+                </div>
+
+                <!-- Phase 5 -->
+                <div class="phase-section">
+                    <h2 class="phase-title">Phase 5: Final Model</h2>
+                    <div class="image-gallery" id="phase5-gallery">
+                        <button class="gallery-arrow gallery-prev" onclick="changeImage('phase5', -1)">←</button>
+                        <div class="gallery-main">
+                            <div class="image-square-frame">
+                                <img id="phase5-main" src="" alt="Phase 5 Image" onclick="openLightbox('phase5')">
+                            </div>
+                        </div>
+                        <button class="gallery-arrow gallery-next" onclick="changeImage('phase5', 1)">→</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Lightbox Modal for Zoom -->
+        <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+            <span class="lightbox-close">&times;</span>
+            <button class="lightbox-arrow lightbox-prev"
+                onclick="event.stopPropagation(); changeLightboxImage(-1)">←</button>
+            <img id="lightbox-img" src="" alt="Zoomed Image" onclick="event.stopPropagation()">
+            <button class="lightbox-arrow lightbox-next"
+                onclick="event.stopPropagation(); changeLightboxImage(1)">→</button>
+        </div>
+
+        <!-- Project Footer -->
+        <section class="project-footer">
+            <div class="container">
+                <div class="project-nav-footer">
+                    <a href="work.html" class="back-link">← Back to Work</a>
+                    <a href="#top" class="back-link">Back to top ↑</a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="container">
+                <p>&copy; 2024 Portfolio. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // Image data for each phase
+        const imageData = {
+            phase1: {
+                images: [
+                    'Phase 1 - 2.5D Hybrid Model/sp25_112_mhatre_wong_kifei_2.5hybrid_07.jpg',
+                    'Phase 1 - 2.5D Hybrid Model/sp25_112_mhatre_wong_kifei_2.5hybrid_08.jpg',
+                    'Phase 1 - 2.5D Hybrid Model/sp25_112_mhatre_wong_kifei_2.5hybrid_09.jpg',
+                    'Phase 1 - 2.5D Hybrid Model/sp25_112_mhatre_wong_kifei_2.5hybrid_10.jpg',
+                    'Phase 1 - 2.5D Hybrid Model/SP25_ARCH112_Mhatre_Wong_Fay_2.5Hybrid_09.jpg',
+                ],
+                currentIndex: 0
+            },
+            phase2: {
+                images: [
+                    'Phase 2 - Textural Massing Models/SP25_ARCH112_Mhatre_Wong_Fay_Exercise2_Model_10.png',
+                    'Phase 2 - Textural Massing Models/SP25_ARCH112_Mhatre_Wong_Fay_Exercise2_Model_12.png',
+                    'Phase 2 - Textural Massing Models/SP25_ARCH112_Mhatre_Wong_Fay_Exercise2_Model_13.png',
+                    'Phase 2 - Textural Massing Models/SP25_ARCH112_Mhatre_Wong_Fay_Exercise2_Model_15.png',
+                    'Phase 2 - Textural Massing Models/SP25_ARCH112_Mhatre_Wong_Fay_Exercise2_Model_28.png',
+                    'Phase 2 - Textural Massing Models/SP25_ARCH112_Mhatre_Wong_Fay_Exercise2_Model_7.png',
+                    'Phase 2 - Textural Massing Models/SP25_ARCH112_Mhatre_Wong_Fay_Exercise2_Model_8.png',
+                    'Phase 2 - Textural Massing Models/SP25_ARCH112_Mhatre_Wong_Fay_Exercise2_Model_9.png'
+                ],
+                currentIndex: 0
+            },
+            phase3: {
+                images: [
+                    'Phase 3 - Digital Drawing Vignettes/ SP25_ARCH112_Mhatre_Wong_Fay_Exercise 3_Plan.jpg',
+                    'Phase 3 - Digital Drawing Vignettes/ SP25_ARCH112_Mhatre_Wong_Fay_Exercise 3_Section.jpg'
+                ],
+                currentIndex: 0
+            },
+            phase4: {
+                images: [
+                    'Phase 4 - Digital Drawing Final/sp25_112_mhatre_wong_kifei_isodrawing.jpg',
+                    'Phase 4 - Digital Drawing Final/sp25_112_mhatre_wong_kifei_plandrawing.jpg',
+                    'Phase 4 - Digital Drawing Final/sp25_112_mhatre_wong_kifei_sectiondrawing.jpg'
+                ],
+                currentIndex: 0
+            },
+            phase5: {
+                images: [
+                    'Phase 5- Final Model/IMG_2747.JPG',
+                    'Phase 5- Final Model/IMG_2808.JPG',
+                    'Phase 5- Final Model/IMG_2810.JPG',
+                    'Phase 5- Final Model/sp25_112_mhatre_wong_kifei_model02_14.jpg',
+                    'Phase 5- Final Model/sp25_112_mhatre_wong_kifei_model02_15.jpg',
+                    'Phase 5- Final Model/sp25_112_mhatre_wong_kifei_model02_16.jpg',
+                    'Phase 5- Final Model/sp25_112_mhatre_wong_kifei_model02_17.jpg'
+                ],
+                currentIndex: 0
+            }
+        };
+
+        const imageFolder = 'images/semester2/';
+        let currentLightboxPhase = null;
+        let currentLightboxIndex = 0;
+
+        // Initialize galleries
+        function initGallery(phase) {
+            const data = imageData[phase];
+            if (!data || data.images.length === 0) {
+                // Hide gallery if no images
+                const gallery = document.getElementById(`${phase}-gallery`);
+                if (gallery) {
+                    gallery.style.display = 'none';
+                }
+                return;
+            }
+
+            updateGalleryImage(phase);
+        }
+
+        // Update gallery image
+        function updateGalleryImage(phase) {
+            const data = imageData[phase];
+            if (!data || data.images.length === 0) return;
+
+            const mainImg = document.getElementById(`${phase}-main`);
+
+            if (mainImg && data.images[data.currentIndex]) {
+                mainImg.src = imageFolder + data.images[data.currentIndex];
+                mainImg.onerror = function () {
+                    console.log('Image failed to load:', imageFolder + data.images[data.currentIndex]);
+                };
+            }
+        }
+
+        // Change image with arrows
+        function changeImage(phase, direction) {
+            const data = imageData[phase];
+            if (!data) return;
+
+            data.currentIndex += direction;
+
+            if (data.currentIndex < 0) {
+                data.currentIndex = data.images.length - 1;
+            } else if (data.currentIndex >= data.images.length) {
+                data.currentIndex = 0;
+            }
+
+            updateGalleryImage(phase);
+        }
+
+        // Open lightbox (zoom)
+        function openLightbox(phase) {
+            const data = imageData[phase];
+            if (!data) return;
+
+            currentLightboxPhase = phase;
+            currentLightboxIndex = data.currentIndex;
+
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightbox-img');
+
+            lightboxImg.src = imageFolder + data.images[data.currentIndex];
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        // Close lightbox
+        function closeLightbox() {
+            const lightbox = document.getElementById('lightbox');
+            lightbox.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        // Change image in lightbox
+        function changeLightboxImage(direction) {
+            if (!currentLightboxPhase) return;
+
+            const data = imageData[currentLightboxPhase];
+            currentLightboxIndex += direction;
+
+            if (currentLightboxIndex < 0) {
+                currentLightboxIndex = data.images.length - 1;
+            } else if (currentLightboxIndex >= data.images.length) {
+                currentLightboxIndex = 0;
+            }
+
+            const lightboxImg = document.getElementById('lightbox-img');
+            lightboxImg.src = imageFolder + data.images[currentLightboxIndex];
+
+            // Update main gallery index
+            data.currentIndex = currentLightboxIndex;
+            updateGalleryImage(currentLightboxPhase);
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', function (e) {
+            const lightbox = document.getElementById('lightbox');
+            if (lightbox.classList.contains('active')) {
+                if (e.key === 'ArrowLeft') {
+                    changeLightboxImage(-1);
+                } else if (e.key === 'ArrowRight') {
+                    changeLightboxImage(1);
+                } else if (e.key === 'Escape') {
+                    closeLightbox();
+                }
+            }
+        });
+
+        // Initialize all galleries on page load
+        window.addEventListener('DOMContentLoaded', function () {
+            initGallery('phase1');
+            initGallery('phase2');
+            initGallery('phase3');
+            initGallery('phase4');
+            initGallery('phase5');
+        });
+    </script>
+</body>
+
+</html>
